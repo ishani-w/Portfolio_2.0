@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Footer — Pure black contact band
+   ========================================================================== */
+
+.footer {
+  position: relative;
+  background: var(--ink);
+  padding: var(--sp-7) 0 var(--sp-5);
+  overflow: hidden;
+}
+
+/* Vertical CONTACT watermark */
+.footer__watermark {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: clamp(80px, 10vw, 160px);
+  color: rgba(255, 255, 255, 0.04);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-5);
+  position: relative;
+  z-index: 1;
+}
+
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.footer__contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer__contact-label {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.footer__contact-value {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--grey-body);
+  line-height: 1.6;
+}
+
+.footer__contact-value a {
+  color: var(--grey-body);
+  transition: color 0.3s ease;
+}
+
+.footer__contact-value a:hover {
+  color: var(--white);
+}
+
+.footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.footer__social-links {
+  display: flex;
+  gap: var(--sp-3);
+}
+
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--sp-5);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--hairline);
+  position: relative;
+  z-index: 1;
+}
+
+.footer__wordmark {
+  font-family: var(--font-ui);
+  font-weight: 200;
+  font-size: 18px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.footer__copy {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--grey-dim);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+
+  .footer__watermark {
+    right: 16px;
+    font-size: 80px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: var(--sp-2);
+    text-align: center;
+  }
+}

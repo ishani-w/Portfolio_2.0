@@ -1,0 +1,87 @@
+/* ==========================================================================
+   ServiceBlock — Numbered service/skill card
+   ========================================================================== */
+
+.service-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-4) 0;
+  border-top: 1px solid var(--hairline);
+  transition: border-color 0.4s ease;
+  position: relative;
+}
+
+.service-block::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -1px;
+  height: 0;
+  width: 1px;
+  background: var(--gold);
+  transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-block:hover::before {
+  height: calc(100% + 2px);
+}
+
+.service-block:hover {
+  border-color: rgba(179, 148, 106, 0.35);
+}
+
+.service-block__number {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 1;
+  color: var(--white);
+  opacity: 0.15;
+  transition: opacity 0.4s ease, color 0.4s ease;
+}
+
+.service-block:hover .service-block__number {
+  opacity: 0.4;
+  color: var(--gold);
+}
+
+.service-block__title {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  transition: color 0.3s ease;
+}
+
+.service-block:hover .service-block__title {
+  color: var(--gold-light);
+}
+
+.service-block__desc {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--grey-body);
+  max-width: 40ch;
+}
+
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+}
+
+@media (max-width: 768px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-block__number {
+    font-size: 48px;
+  }
+}

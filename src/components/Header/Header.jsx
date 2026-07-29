@@ -1,0 +1,104 @@
+import { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import './Header.css';
+
+const NAV_LINKS = [
+  { path: '/', label: 'Home' },
+  { path: '/work', label: 'Work' },
+  { path: '/about', label: 'About' },
+  { path: '/contact', label: 'Contact' },
+];
+
+export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
+  // Scroll state for header styling
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  const isWorkPage = (path) => {
+    if (path === '/work') {
+      return location.pathname.startsWith('/work');
+    }
+    return false;
+  };
+
+  return (
+    <header className={`header${scrolled ? ' header--scrolled' : ''}`} id="site-header">
+      <div className="header__inner">
+        <Link to="/" className="header__wordmark">
+          Ishani Wijesooriya
+        </Link>
+
+        <nav className="header__nav" aria-label="Main navigation">
+          {NAV_LINKS.map(({ path, label }) => (
+            <NavLink
+              key={path}
+              to={path}
+              end={path === '/' || path === '/work'}
+              className={({ isActive }) =>
+                `header__nav-link${isActive || isWorkPage(path) ? ' active' : ''}`
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+
+        <button
+          className={`header__hamburger${menuOpen ? ' open' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
+
+      {/* Mobile overlay */}
+      <div
+        className={`header__overlay${menuOpen ? ' open' : ''}`}
+        onClick={() => setMenuOpen(false)}
+      />
+
+      {/* Mobile slide panel */}
+      <nav
+        className={`header__mobile-nav${menuOpen ? ' open' : ''}`}
+        aria-label="Mobile navigation"
+      >
+        {NAV_LINKS.map(({ path, label }) => (
+          <NavLink
+            key={path}
+            to={path}
+            end={path === '/' || path === '/work'}
+            className={({ isActive }) =>
+              `header__nav-link${isActive || isWorkPage(path) ? ' active' : ''}`
+            }
+            onClick={() => setMenuOpen(false)}
+          >
+            {label}
+          </NavLink>
+        ))}
+      </nav>
+    </header>
+  );
+}
