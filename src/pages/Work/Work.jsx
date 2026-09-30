@@ -2,17 +2,19 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionReveal from '../../components/SectionReveal/SectionReveal';
 import ProjectCard from '../../components/ProjectCard/ProjectCard';
-import projects, { corporateProjects } from '../../data/projects';
+import projects, { corporateProjects, brandProjects, uiuxProjects } from '../../data/projects';
 import digitalArts from '../../data/digitalArts';
 import './Work.css';
 
 export default function Work() {
-  const [activeTab, setActiveTab] = useState('all'); // 'all', 'case-studies', 'corporate', 'digital-art'
+  const [activeTab, setActiveTab] = useState('all'); // 'all', 'brand-identity', 'uiux', 'corporate', 'digital-art'
   const [artSubFilter, setArtSubFilter] = useState('all'); // 'all', '3d', 'illustration'
 
   const filteredArts = activeTab === 'digital-art' && artSubFilter !== 'all'
     ? digitalArts.filter((art) => art.type === artSubFilter)
     : digitalArts;
+
+  const totalWorksCount = projects.length + corporateProjects.length + digitalArts.length;
 
   return (
     <>
@@ -25,7 +27,7 @@ export default function Work() {
                 <span className="eyebrow" style={{ display: 'block', marginBottom: '16px' }}>
                   Portfolio & Creative Works
                 </span>
-                <h1 className="page-title">Selected Work & Digital Arts</h1>
+                <h1 className="page-title">Selected Work & Brand Systems</h1>
               </div>
               <nav className="work-hero__breadcrumb" aria-label="Breadcrumb">
                 <Link to="/">Home</Link>
@@ -46,13 +48,19 @@ export default function Work() {
                 className={`work-tab ${activeTab === 'all' ? 'active' : ''}`}
                 onClick={() => setActiveTab('all')}
               >
-                All Works ({projects.length + corporateProjects.length + digitalArts.length})
+                All Works ({totalWorksCount})
               </button>
               <button
-                className={`work-tab ${activeTab === 'case-studies' ? 'active' : ''}`}
-                onClick={() => setActiveTab('case-studies')}
+                className={`work-tab ${activeTab === 'brand-identity' ? 'active' : ''}`}
+                onClick={() => setActiveTab('brand-identity')}
               >
-                Case Studies ({projects.length})
+                Brand Identity ({brandProjects.length})
+              </button>
+              <button
+                className={`work-tab ${activeTab === 'uiux' ? 'active' : ''}`}
+                onClick={() => setActiveTab('uiux')}
+              >
+                UX & Product ({uiuxProjects.length})
               </button>
               <button
                 className={`work-tab ${activeTab === 'corporate' ? 'active' : ''}`}
@@ -64,7 +72,7 @@ export default function Work() {
                 className={`work-tab ${activeTab === 'digital-art' ? 'active' : ''}`}
                 onClick={() => setActiveTab('digital-art')}
               >
-                Digital Arts & Visuals ({digitalArts.length})
+                Digital Arts ({digitalArts.length})
               </button>
             </div>
 
@@ -95,15 +103,57 @@ export default function Work() {
         </div>
       </section>
 
-      {/* ===== Project Grid (Case Studies) ===== */}
-      {(activeTab === 'all' || activeTab === 'case-studies') && (
-        <section className="work-grid-section section-pad" id="work-grid">
+      {/* ===== Brand Identity Projects Section ===== */}
+      {(activeTab === 'all' || activeTab === 'brand-identity') && (
+        <section className="work-grid-section section-pad" id="brand-identity-grid">
           <div className="container">
-            {activeTab === 'all' && (
-              <h2 className="work-section-heading">UX & Product Case Studies</h2>
-            )}
+            <SectionReveal direction="up">
+              <div className="work-section-header">
+                <div>
+                  <span className="eyebrow">Visual Systems & Guidelines</span>
+                  <h2 className="section-h2" style={{ marginTop: '12px', marginBottom: '24px' }}>
+                    Brand Identity & Logo Systems
+                  </h2>
+                </div>
+                {activeTab === 'all' && (
+                  <p className="work-section-subtext">
+                    Featured brand design case studies, custom typography, and complete visual guidelines also presented on Behance.
+                  </p>
+                )}
+              </div>
+            </SectionReveal>
             <div className="project-grid">
-              {projects.map((project, i) => (
+              {brandProjects.map((project, i) => (
+                <SectionReveal key={project.id} delay={i * 140}>
+                  <ProjectCard project={project} />
+                </SectionReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ===== UX & Product Case Studies Section ===== */}
+      {(activeTab === 'all' || activeTab === 'uiux') && (
+        <section className={`work-grid-section section-pad ${activeTab === 'all' ? 'work-grid-section--alt' : ''}`} id="uiux-grid">
+          <div className="container">
+            <SectionReveal direction="up">
+              <div className="work-section-header">
+                <div>
+                  <span className="eyebrow">Product Strategy & Engineering</span>
+                  <h2 className="section-h2" style={{ marginTop: '12px', marginBottom: '24px' }}>
+                    UX & Product Case Studies
+                  </h2>
+                </div>
+                {activeTab === 'all' && (
+                  <p className="work-section-subtext">
+                    End-to-end design engineering, design systems, and web/mobile application architectures.
+                  </p>
+                )}
+              </div>
+            </SectionReveal>
+            <div className="project-grid">
+              {uiuxProjects.map((project, i) => (
                 <SectionReveal key={project.id} delay={i * 150}>
                   <ProjectCard project={project} />
                 </SectionReveal>
@@ -120,7 +170,12 @@ export default function Work() {
             <SectionReveal direction="up">
               <div className="corp-projects__header">
                 {activeTab === 'all' ? (
-                  <h2 className="work-section-heading">Corporate & Client Projects</h2>
+                  <div>
+                    <span className="eyebrow">Enterprise & Commercial</span>
+                    <h2 className="section-h2" style={{ marginTop: '12px', marginBottom: '24px' }}>
+                      Corporate Websites & Portal Systems
+                    </h2>
+                  </div>
                 ) : (
                   <div>
                     <span className="eyebrow">Enterprise & Freelance</span>
@@ -193,4 +248,3 @@ export default function Work() {
     </>
   );
 }
-

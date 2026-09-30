@@ -4,6 +4,7 @@ import SectionReveal from '../../components/SectionReveal/SectionReveal';
 import ProjectCard from '../../components/ProjectCard/ProjectCard';
 import CircleArrow from '../../components/CircleArrow/CircleArrow';
 import SplitText from '../../components/SplitText/SplitText';
+import LogoCarousel from '../../components/LogoCarousel/LogoCarousel';
 import projects from '../../data/projects';
 import heroBg from '../../assets/images/hero-bg.png';
 import './Home.css';
@@ -48,27 +49,21 @@ export default function Home() {
           {/* Character-split animated headline */}
           <h1 className="home-hero__title">
             <div className="home-hero__title-line">
-              <SplitText text="Designing intuitive" tag="span" baseDelay={100} charDelay={28} />
+              <SplitText text="Designing intuitive products." tag="span" baseDelay={100} charDelay={25} />
             </div>
             <div className="home-hero__title-line">
-              <SplitText text="products." tag="span" baseDelay={620} charDelay={48} />
-            </div>
-            <div className="home-hero__title-line">
-              <SplitText text="Building seamless" tag="span" baseDelay={1080} charDelay={28} />
-            </div>
-            <div className="home-hero__title-line">
-              <SplitText text="experiences." tag="span" baseDelay={1600} charDelay={46} />
+              <SplitText text="Building seamless experiences." tag="span" baseDelay={850} charDelay={25} />
             </div>
           </h1>
 
-          <SectionReveal delay={2400}>
+          <SectionReveal delay={1750}>
             <p className="home-hero__subtitle">
               UI/UX Engineer & Product Manager — crafting data-informed product strategies
               and building polished, accessible web & mobile applications.
             </p>
           </SectionReveal>
 
-          <SectionReveal delay={2600}>
+          <SectionReveal delay={1950}>
             <div className="home-hero__cta">
               <Link to="/work" className="btn btn-primary">
                 View My Work
@@ -102,6 +97,7 @@ export default function Home() {
         </div>
       </section>
 
+
       {/* ===== Selected Work ===== */}
       <section className="home-work section-pad" id="selected-work">
         <div className="container">
@@ -126,6 +122,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ===== Tools & Technologies Marquee ===== */}
+      <LogoCarousel />
     </>
   );
 }

@@ -158,7 +158,7 @@ export default function Contact() {
 
                 <div className="contact-links__item">
                   <span className="contact-links__label">Location</span>
-                  <span className="contact-links__value" style={{ color: 'var(--grey-body)' }}>
+                  <span className="contact-links__value">
                     Rahathungoda, Hewahata, Sri Lanka
                   </span>
                 </div>

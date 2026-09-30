@@ -7,13 +7,18 @@
     <meta name="description" content="Portfolio of a UI/UX Engineer & Product Engineer — designing complex systems, building intuitive experiences." />
     <meta name="theme-color" content="#161616" />
 
-    <!-- Google Fonts: Montserrat, Cormorant Garamond, Jost -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&family=Montserrat:wght@200;300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+
+
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('portfolio-theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = saved || (prefersDark ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
 
     <title>Ishani Wijesooriya · UI/UX & Product Engineer</title>
   </head>

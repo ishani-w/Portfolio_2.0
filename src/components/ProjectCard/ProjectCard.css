@@ -45,6 +45,33 @@
   pointer-events: none;
 }
 
+.project-card__badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--badge-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--banner-border);
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  z-index: 2;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .project-card__badge {
+  background: var(--gold);
+  color: #FFFFFF;
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
 .project-card__body {
   padding: var(--sp-3) 0;
   display: flex;

@@ -59,9 +59,30 @@ export default function CaseStudy() {
           />
         </div>
         <div className="case-hero__content container">
-          <SectionReveal direction="up" delay={200}>
-            <h1 className="case-hero__title">{project.title}</h1>
-          </SectionReveal>
+          <div>
+            <SectionReveal direction="up" delay={200}>
+              <h1 className="case-hero__title">{project.title}</h1>
+            </SectionReveal>
+            {project.behanceUrl && (
+              <SectionReveal direction="up" delay={300}>
+                <div className="case-hero__behance-link">
+                  <a
+                    href={project.behanceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="case-behance-badge"
+                  >
+                    <span>View Project on Behance</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                </div>
+              </SectionReveal>
+            )}
+          </div>
           <nav className="case-hero__breadcrumb" aria-label="Breadcrumb">
             <Link to="/">Home</Link>
             {' › '}
@@ -185,6 +206,37 @@ export default function CaseStudy() {
           </SectionReveal>
         </div>
       </section>
+
+      {/* ===== Behance External Showcase Banner ===== */}
+      {project.behanceUrl && (
+        <section className="case-behance-section section-pad" id="case-behance">
+          <div className="container">
+            <SectionReveal direction="up">
+              <div className="case-behance-banner">
+                <div className="case-behance-banner__content">
+                  <span className="eyebrow">Original Portfolio Feature</span>
+                  <h2 className="case-behance-banner__title">
+                    View Complete Presentation on Behance
+                  </h2>
+                  <p className="case-behance-banner__desc">
+                    Explore the full case study presentation on Behance, featuring high-resolution mockups, typographic systems, stationery suites, and detailed brand identity guidelines.
+                  </p>
+                </div>
+                <div className="case-behance-banner__cta">
+                  <a
+                    href={project.behanceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary"
+                  >
+                    <span>Open on Behance ↗</span>
+                  </a>
+                </div>
+              </div>
+            </SectionReveal>
+          </div>
+        </section>
+      )}
 
       {/* ===== Next Project ===== */}
       <section className="case-next section-pad" id="case-next">

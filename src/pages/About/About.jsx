@@ -1,28 +1,6 @@
 import SectionReveal from '../../components/SectionReveal/SectionReveal';
-import ServiceBlock from '../../components/ServiceBlock/ServiceBlock';
 import portrait from '../../assets/images/portrait.png';
 import './About.css';
-
-const SKILLS = [
-  {
-    number: '01',
-    title: 'UI/UX Design',
-    description:
-      'End-to-end user experience design from user research, wireframing, and interactive prototyping to scalable design systems in Figma.',
-  },
-  {
-    number: '02',
-    title: 'UI/UX Engineering',
-    description:
-      'Production-grade interfaces built with React, TypeScript, and Next.js. Component-driven architecture with design token integration and WCAG accessibility.',
-  },
-  {
-    number: '03',
-    title: 'Product Management',
-    description:
-      'Defining product vision, roadmap strategy, feature prioritization, and user story mapping to deliver business impact and user satisfaction.',
-  },
-];
 
 export default function About() {
   return (
@@ -87,30 +65,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ===== Skills ===== */}
-      <section className="about-skills section-pad" id="about-skills">
-        <div className="container">
-          <SectionReveal direction="up">
-            <div className="about-skills__header">
-              <span className="eyebrow">What I Do</span>
-              <h2 className="section-h2">Core Capabilities</h2>
-            </div>
-          </SectionReveal>
-
-          {/* Staggered entry for each skill card */}
-          <div className="service-grid">
-            {SKILLS.map((skill, i) => (
-              <SectionReveal key={skill.number} direction="up" delay={100 + i * 150}>
-                <ServiceBlock
-                  number={skill.number}
-                  title={skill.title}
-                  description={skill.description}
-                />
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ===== Experience & Education ===== */}
       <section className="about-history section-pad" id="about-history">

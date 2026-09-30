@@ -101,19 +101,6 @@
   margin-bottom: 0;
 }
 
-/* ---- Skills Section ---- */
-.about-skills {
-  background: var(--near-black);
-}
-
-.about-skills__header {
-  text-align: center;
-  margin-bottom: var(--sp-5);
-}
-
-.about-skills__header h2 {
-  margin-top: var(--sp-2);
-}
 
 /* ---- Resume CTA ---- */
 .about-resume {
@@ -211,7 +198,7 @@
 .timeline-item:hover::before {
   background: var(--gold);
   border-color: var(--gold);
-  box-shadow: 0 0 10px rgba(179, 148, 106, 0.4);
+  box-shadow: 0 0 12px var(--primary-glow);
 }
 
 .timeline-date {
@@ -322,7 +309,7 @@
 .tech-chip:hover {
   border-color: var(--gold-light);
   color: var(--white);
-  background: rgba(179, 148, 106, 0.1);
+  background: var(--primary-subtle);
   transform: translateY(-2px);
 }
 

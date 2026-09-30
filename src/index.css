@@ -5,24 +5,50 @@
 
 /* ---- CSS Custom Properties (Design Tokens) ---- */
 :root {
-  /* Surfaces */
+  /* Surfaces (Dark Mode Default) */
   --ink:        #000000;
   --near-black: #0D0D0D;
   --charcoal:   #161616;
   --slate:      #242424;
 
-  /* Accent & Text */
-  --gold:       #B3946A;
-  --gold-light: #C9AD84;
-  --white:      #FFFFFF;
-  --grey-body:  #9C9C9C;
-  --grey-dim:   #6A6A6A;
-  --hairline:   rgba(255, 255, 255, 0.10);
+  /* Primary & Accent (#E4002B) */
+  --primary:        #E4002B;
+  --primary-light:  #FF2A4D;
+  --primary-dark:   #B80022;
+  --primary-subtle: rgba(228, 0, 43, 0.12);
+  --primary-glow:   rgba(228, 0, 43, 0.4);
+  --primary-border: rgba(228, 0, 43, 0.25);
 
-  /* Typography */
-  --font-ui:    "Montserrat", sans-serif;
-  --font-serif: "Cormorant Garamond", serif;
-  --font-body:  "Jost", sans-serif;
+  --gold:           var(--primary);
+  --gold-light:     var(--primary-light);
+  --white:          #FFFFFF;
+  --grey-body:      #9C9C9C;
+  --grey-dim:       #6A6A6A;
+  --hairline:       rgba(255, 255, 255, 0.10);
+
+  /* Dynamic Theme Tokens */
+  --header-bg:          rgba(10, 10, 10, 0.92);
+  --header-bg-scrolled: rgba(10, 10, 10, 0.97);
+  --header-border:      rgba(228, 0, 43, 0.18);
+  --nav-link:           #CFCFCF;
+  --nav-link-hover:     #FFFFFF;
+  --hero-overlay:       radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+  --hero-bg-opacity:    0.35;
+  --watermark:          rgba(255, 255, 255, 0.04);
+  --rail-color:         rgba(255, 255, 255, 0.06);
+  --form-border:        rgba(255, 255, 255, 0.14);
+  --card-shadow:        0 4px 20px rgba(0, 0, 0, 0.25);
+  --circle-arrow-border: rgba(255, 255, 255, 0.3);
+  --badge-bg:           rgba(10, 11, 14, 0.8);
+  --banner-bg:          linear-gradient(135deg, rgba(24, 26, 32, 0.9) 0%, rgba(14, 16, 20, 0.95) 100%);
+  --banner-border:      rgba(228, 0, 43, 0.25);
+  --btn-outline-border: rgba(255, 255, 255, 0.4);
+  --header-shadow:      0 1px 40px rgba(0, 0, 0, 0.5);
+
+  /* Typography — Helvetica */
+  --font-ui:    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body:  "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   /* Layout */
   --container:  1160px;
@@ -37,6 +63,49 @@
   --sp-6: 96px;
   --sp-7: 130px;
   --sp-8: 160px;
+}
+
+/* Light Theme — Warm Luxury Editorial Aesthetic */
+[data-theme="light"] {
+  /* Surfaces */
+  --ink:        #FFFFFF;
+  --near-black: #F4F2ED;
+  --charcoal:   #FAFAF7;
+  --slate:      #FFFFFF;
+
+  /* Primary & Accent (#E4002B) */
+  --primary:        #E4002B;
+  --primary-light:  #FF2A4D;
+  --primary-dark:   #C40024;
+  --primary-subtle: rgba(228, 0, 43, 0.08);
+  --primary-glow:   rgba(228, 0, 43, 0.25);
+  --primary-border: rgba(228, 0, 43, 0.25);
+
+  --gold:           var(--primary);
+  --gold-light:     var(--primary-light);
+  --white:          #121316;
+  --grey-body:      #4E525B;
+  --grey-dim:       #757A85;
+  --hairline:       rgba(0, 0, 0, 0.08);
+
+  /* Dynamic Theme Tokens */
+  --header-bg:          rgba(250, 250, 247, 0.92);
+  --header-bg-scrolled: rgba(250, 250, 247, 0.98);
+  --header-border:      rgba(228, 0, 43, 0.18);
+  --nav-link:           #4E525B;
+  --nav-link-hover:     #121316;
+  --hero-overlay:       radial-gradient(ellipse at center, rgba(250, 250, 247, 0.45) 0%, rgba(250, 250, 247, 0.92) 100%);
+  --hero-bg-opacity:    0.2;
+  --watermark:          rgba(0, 0, 0, 0.035);
+  --rail-color:         rgba(0, 0, 0, 0.07);
+  --form-border:        rgba(0, 0, 0, 0.14);
+  --card-shadow:        0 4px 20px rgba(0, 0, 0, 0.06);
+  --circle-arrow-border: rgba(0, 0, 0, 0.25);
+  --badge-bg:           rgba(255, 255, 255, 0.9);
+  --banner-bg:          linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(244, 242, 237, 0.98) 100%);
+  --banner-border:      rgba(228, 0, 43, 0.25);
+  --btn-outline-border: rgba(18, 19, 22, 0.3);
+  --header-shadow:      0 1px 24px rgba(0, 0, 0, 0.06);
 }
 
 /* ---- Reset ---- */
@@ -63,6 +132,7 @@ body {
   color: var(--grey-body);
   background-color: var(--charcoal);
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 img {
@@ -202,24 +272,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-  background: var(--white);
-  color: var(--ink);
+  background: var(--primary);
+  color: #FFFFFF;
 }
 
 .btn-primary:hover {
-  background: var(--gold-light);
-  color: var(--ink);
+  background: var(--primary-light);
+  color: #FFFFFF;
+  box-shadow: 0 4px 20px var(--primary-glow);
 }
 
 .btn-outline {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: var(--white);
+  border: 1px solid var(--btn-outline-border);
+  color: #FFFFFF;
 }
 
-.btn-outline:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] .btn-outline {
+  border-color: rgba(0, 0, 0, 0.35);
+  color: #000000;
+}
+
+[data-theme="light"] .btn-outline:hover,
+[data-theme="light"] .btn-outline:focus-visible {
+  border-color: #000000;
+  color: #000000;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 /* ---- Inline Link ---- */
@@ -227,7 +312,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--gold);
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(179, 148, 106, 0.3);
+  text-decoration-color: var(--primary-border);
   transition: all 0.3s ease;
 }
 
@@ -363,7 +448,7 @@ h1, h2, h3, h4, h5, h6 {
 .form-field {
   width: 100%;
   background: var(--ink);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--form-border);
   padding: 19px 22px;
   font-family: var(--font-ui);
   font-weight: 500;
@@ -389,8 +474,8 @@ textarea.form-field {
 
 /* ---- Selection ---- */
 ::selection {
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--primary);
+  color: #FFFFFF;
 }
 
 /* ---- Scrollbar ---- */

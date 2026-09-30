@@ -8,6 +8,11 @@ export default function ProjectCard({ project }) {
       <div className="project-card__image-wrap">
         <img src={project.heroImage} alt={project.title} loading="lazy" />
         <div className="project-card__overlay" />
+        {project.behanceUrl && (
+          <span className="project-card__badge" title="Featured on Behance">
+            Behance
+          </span>
+        )}
       </div>
       <div className="project-card__body">
         <span className="project-card__category">{project.category}</span>

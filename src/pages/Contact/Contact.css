@@ -73,7 +73,8 @@
   font-size: 12px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--white);
+  transition: color 0.3s ease;
 }
 
 .contact-links__value {
@@ -81,19 +82,40 @@
   font-weight: 300;
   font-size: 16px;
   line-height: 1.6;
+  color: var(--white);
 }
 
 .contact-links__value a {
-  color: var(--gold);
+  color: var(--white);
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(179, 148, 106, 0.3);
+  text-decoration-color: rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease;
 }
 
 .contact-links__value a:hover {
-  color: var(--gold-light);
-  text-decoration-color: var(--gold-light);
+  color: var(--white);
+  text-decoration-color: var(--white);
+  opacity: 0.75;
+}
+
+[data-theme="light"] .contact-links__label {
+  color: #121316;
+}
+
+[data-theme="light"] .contact-links__value {
+  color: #121316;
+}
+
+[data-theme="light"] .contact-links__value a {
+  color: #121316;
+  text-decoration-color: rgba(18, 19, 22, 0.4);
+}
+
+[data-theme="light"] .contact-links__value a:hover {
+  color: #000000;
+  text-decoration-color: #000000;
+  opacity: 0.75;
 }
 
 /* ---- Success message ---- */
@@ -116,7 +138,7 @@
 .contact-success__icon svg {
   width: 28px;
   height: 28px;
-  stroke: var(--ink);
+  stroke: #FFFFFF;
   fill: none;
   stroke-width: 3;
 }

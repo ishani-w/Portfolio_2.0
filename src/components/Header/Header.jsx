@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import './Header.css';
 
 const NAV_LINKS = [
@@ -21,9 +22,14 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
+  const [prevPath, setPrevPath] = useState(location.pathname);
+  if (prevPath !== location.pathname) {
+    setPrevPath(location.pathname);
     setMenuOpen(false);
+  }
+
+  // Scroll to top on route change
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
@@ -47,31 +53,35 @@ export default function Header() {
           Ishani Wijesooriya
         </Link>
 
-        <nav className="header__nav" aria-label="Main navigation">
-          {NAV_LINKS.map(({ path, label }) => (
-            <NavLink
-              key={path}
-              to={path}
-              end={path === '/' || path === '/work'}
-              className={({ isActive }) =>
-                `header__nav-link${isActive || isWorkPage(path) ? ' active' : ''}`
-              }
-            >
-              {label}
-            </NavLink>
-          ))}
-        </nav>
+        <div className="header__actions">
+          <nav className="header__nav" aria-label="Main navigation">
+            {NAV_LINKS.map(({ path, label }) => (
+              <NavLink
+                key={path}
+                to={path}
+                end={path === '/' || path === '/work'}
+                className={({ isActive }) =>
+                  `header__nav-link${isActive || isWorkPage(path) ? ' active' : ''}`
+                }
+              >
+                {label}
+              </NavLink>
+            ))}
+          </nav>
 
-        <button
-          className={`header__hamburger${menuOpen ? ' open' : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation menu"
-          aria-expanded={menuOpen}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+          <ThemeToggle className="header__theme-toggle" />
+
+          <button
+            className={`header__hamburger${menuOpen ? ' open' : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
 
       {/* Mobile overlay */}
@@ -98,6 +108,8 @@ export default function Header() {
             {label}
           </NavLink>
         ))}
+
+        <ThemeToggle showLabel className="header__mobile-theme-toggle" />
       </nav>
     </header>
   );

@@ -28,7 +28,7 @@
 }
 
 .service-block:hover {
-  border-color: rgba(179, 148, 106, 0.35);
+  border-color: var(--primary-border);
 }
 
 .service-block__number {

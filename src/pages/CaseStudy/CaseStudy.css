@@ -249,6 +249,77 @@
   color: var(--gold);
 }
 
+/* ---- Behance External Link & Banner ---- */
+.case-hero__behance-link {
+  margin-top: 20px;
+}
+
+.case-behance-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(10, 11, 14, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--banner-border);
+  border-radius: 999px;
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.case-behance-badge:hover {
+  background: var(--gold);
+  color: #FFFFFF;
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.case-behance-section {
+  background: var(--near-black);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.case-behance-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: 48px;
+  border-radius: 12px;
+  background: var(--banner-bg);
+  border: 1px solid var(--banner-border);
+}
+
+.case-behance-banner__content {
+  max-width: 680px;
+}
+
+.case-behance-banner__title {
+  font-family: var(--font-ui);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 400;
+  color: var(--white);
+  margin-top: 12px;
+}
+
+.case-behance-banner__desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--grey-dim);
+  margin-top: 12px;
+}
+
+.case-behance-banner__cta {
+  flex-shrink: 0;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   .case-meta__grid {
@@ -261,6 +332,12 @@
 
   .case-hero__content {
     padding: var(--sp-3);
+  }
+
+  .case-behance-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 24px;
   }
 }
 

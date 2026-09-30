@@ -69,13 +69,13 @@
 
 .work-tab:hover {
   color: var(--white);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--hairline);
 }
 
 .work-tab.active {
   color: var(--gold);
   border-color: var(--gold);
-  background: rgba(179, 148, 106, 0.1);
+  background: var(--primary-subtle);
 }
 
 .work-section-heading {
@@ -87,8 +87,30 @@
   letter-spacing: 0.05em;
 }
 
+.work-section-header {
+  margin-bottom: var(--sp-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.work-section-subtext {
+  color: var(--grey-dim);
+  max-width: 520px;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
 .work-grid-section {
   background: var(--charcoal);
+}
+
+.work-grid-section--alt {
+  background: var(--near-black);
+  border-top: 1px solid var(--hairline);
 }
 
 .work-grid-section .project-grid {
@@ -162,15 +184,16 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  background: rgba(0, 0, 0, 0.75);
+  background: var(--badge-bg);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: var(--gold);
   font-family: var(--font-ui);
   font-size: 11px;
   letter-spacing: 0.1em;
   padding: 4px 10px;
   border-radius: 20px;
-  border: 1px solid rgba(179, 148, 106, 0.3);
+  border: 1px solid var(--banner-border);
 }
 
 .art-card__info {

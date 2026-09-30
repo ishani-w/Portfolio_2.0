@@ -27,7 +27,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--circle-arrow-border);
   transition: all 0.35s ease;
 }
 
@@ -47,7 +47,7 @@
 
 .circle-arrow:hover .circle-arrow__icon svg {
   transform: translateX(2px);
-  stroke: var(--ink);
+  stroke: #FFFFFF;
 }
 
 .circle-arrow:hover .circle-arrow__label {
